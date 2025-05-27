@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         racing: ["Racing Sans One", "sans-serif"],
+        fira: ['var(--font-fira)', 'sans-serif'],
       },
     },
   },

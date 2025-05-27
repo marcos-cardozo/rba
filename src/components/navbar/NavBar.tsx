@@ -1,9 +1,10 @@
 import { NavBarItems } from "@/data/NavBar";
 import Image from "next/image";
+import Button from "../Button/Button";
 
 const NavBar = () => {
   return (
-    <header className="w-full bg-[#ED61A5] shadow-md">
+    <header className="w-full bg-[#ED61A5] shadow-md sticky top-0 z-50">
       <nav className="w-full">
         <div className="flex justify-between items-center px-16 py-4 mx-auto h-20 relative text-white font-racing">
           {/* Logo + texto */}
@@ -26,11 +27,9 @@ const NavBar = () => {
             ))}
           </ul>
 
-          {/* Botón derecho */}
+          {/* Botón derecho usando el componente reutilizable */}
           <div className="h-full flex items-center pr-16 !mr-16">
-            <button className="bg-gradient-to-r from-yellow-300 via-yellow-200 to-yellow-300 text-purple-900 font-bold italic uppercase text-2xl !px-10 !py-3 rounded-full shadow-md transition-transform duration-300 transform hover:scale-105 hover:shadow-[0_0_15px_5px_rgba(255,255,0,0.6)] cursor-pointer">
-              Únete ya
-            </button>
+            <Button size="lg">Únete ya</Button>
           </div>
         </div>
       </nav>

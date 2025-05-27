@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Racing_Sans_One } from 'next/font/google';
+import { Fira_Sans } from 'next/font/google'
 
 const racingSansOne = Racing_Sans_One({
   weight: '400',
@@ -9,6 +10,16 @@ const racingSansOne = Racing_Sans_One({
   display: 'swap',
   variable: '--font-racing-sans-one', // ¡Define una variable CSS!
 });
+
+const fira = Fira_Sans({
+  subsets: ['latin'],
+  weight: [
+    '100', '200', '300', '400', '500', '600', '700', '800', '900'
+  ],
+  style: ['normal', 'italic'],
+  variable: '--font-fira',
+  display: 'swap',
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${racingSansOne.variable}`}>
+    <html lang="es" className={`${racingSansOne.variable} ${fira.variable}`}>
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
