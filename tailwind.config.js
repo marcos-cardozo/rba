@@ -8,6 +8,7 @@ module.exports = {
       fontFamily: {
         racing: ["Racing Sans One", "sans-serif"],
         fira: ["var(--font-fira)", "sans-serif"],
+        sans: ['"Poppins"', "sans-serif"],
       },
       keyframes: {
         "gradient-x": {

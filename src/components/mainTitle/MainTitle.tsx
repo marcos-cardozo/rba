@@ -13,9 +13,9 @@ const MainTitle = () => {
   return (
     <motion.div 
       className="!min-h-screen flex flex-col justify-center items-center text-center !px-4 !pt-32 !pb-20"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, type: "spring", damping: 15, stiffness: 120 }}
     >
       {/* Contenedor principal */}
       <div className="!max-w-3xl !mx-auto">
@@ -77,20 +77,23 @@ const MainTitle = () => {
               key={index}
               className="!flex !items-center !gap-3"
               variants={{
-                hidden: { opacity: 0, y: -20 },
+                hidden: { opacity: 0, y: -30, scale: 0.9 },
                 visible: { 
                   opacity: 1, 
                   y: 0,
+                  scale: 1,
                   transition: {
                     type: "spring",
-                    stiffness: 200,
-                    damping: 12
+                    stiffness: 300,
+                    damping: 15
                   }
                 }
               }}
               whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.2 }
+                scale: 1.07,
+                color: "#DB8DF7",
+                textShadow: "0 0 8px #DB8DF7",
+                transition: { duration: 0.25 }
               }}
             >
               <motion.div
@@ -128,6 +131,8 @@ const MainTitle = () => {
           animate={{
             y: [0, (Math.random() - 0.5) * 40],
             x: [0, (Math.random() - 0.5) * 20],
+            rotate: [0, 360],
+            scale: [1, 1.2, 1],
           }}
           transition={{
             duration: Math.random() * 10 + 10,

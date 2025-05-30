@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -42,6 +43,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${racingSansOne.variable} ${fira.variable}`}>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

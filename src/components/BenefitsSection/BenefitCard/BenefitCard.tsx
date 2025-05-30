@@ -1,7 +1,9 @@
-"use client";
-
-import React from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { motion } from "framer-motion";
+import { FaCheckCircle } from "react-icons/fa";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
+import { useCallback } from "react";
 
 interface BenefitCardProps {
   title: string;
@@ -10,45 +12,92 @@ interface BenefitCardProps {
   borderColorTo: string;
 }
 
-const BenefitCard: React.FC<BenefitCardProps> = ({ title, subtitle, borderColorFrom, borderColorTo }) => {
+export default function BenefitCard({
+  title,
+  subtitle,
+  borderColorFrom,
+  borderColorTo,
+}: BenefitCardProps) {
+  const particlesInit = useCallback(async (engine: any) => {
+    await loadFull(engine);
+  }, []);
+
   return (
-    <motion.div
-      className="!p-[3px] !rounded-xl !transition-transform !duration-500 !ease-in-out hover:!scale-105 hover:!rotate-2"
-      animate={{
-        backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-      }}
-      transition={{ duration: 2, repeat: Infinity }}
-      style={{
-        background: `linear-gradient(90deg, ${borderColorFrom}, ${borderColorTo})`,
-        backgroundSize: "200% 200%",
-      }}
-    >
+    <div className="relative w-full">
+      {/* Fondo con íconos personalizados */}
+      <Particles
+        id="tsparticles-icons"
+        init={particlesInit}
+        className="!absolute !inset-0 !z-0"
+        options={{
+          background: { color: { value: "transparent" } },
+          fpsLimit: 60,
+          particles: {
+            number: { value: 8 },
+            move: { enable: true, speed: 0.5 },
+            size: { value: 18 },
+            opacity: { value: 0.2 },
+            shape: {
+              type: "image",
+              image: [
+                {
+                  src: "/icons/rocket.svg",
+                  width: 32,
+                  height: 32,
+                },
+                {
+                  src: "/icons/star.svg",
+                  width: 24,
+                  height: 24,
+                },
+                {
+                  src: "/icons/bolt.svg",
+                  width: 24,
+                  height: 24,
+                },
+              ],
+            },
+          },
+        }}
+      />
+
       <motion.div
-        className="!rounded-xl !p-10 !text-center !text-gray-300 !shadow-lg hover:!shadow-2xl !transition-shadow !duration-300 !ease-in-out !bg-[#0E0622]"
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="!relative !z-10 !p-[2px] !rounded-xl !transition-transform !duration-500 !ease-in-out hover:!scale-105 hover:!rotate-2"
+        animate={{
+          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+        }}
+        transition={{ duration: 2, repeat: Infinity }}
+        style={{
+          background: `linear-gradient(90deg, ${borderColorFrom}, ${borderColorTo})`,
+          backgroundSize: "200% 200%",
+        }}
       >
-        <motion.h3
-          className="!text-lg !font-geistSans !font-bold !mb-2"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+        <motion.div
+          className="!rounded-xl !p-8 !text-center !shadow-xl hover:!shadow-2xl !transition-shadow !duration-300 !ease-in-out !backdrop-blur-md !bg-white/80 !border !border-black/10"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          {title}
-        </motion.h3>
+          <motion.h3
+            className="!text-lg !font-sans !font-bold !mb-2 !text-black !flex !items-center !justify-center !gap-2"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <FaCheckCircle className="!text-black !animate-pulse" />
+            {title}
+          </motion.h3>
 
-        <motion.p
-          className="!text-sm !font-geistSans !font-normal"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-        >
-          {subtitle}
-        </motion.p>
+          <motion.p
+            className="!text-sm !font-sans !font-medium !text-black/70"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+          >
+            {subtitle}
+          </motion.p>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   );
-};
-
-export default BenefitCard;
+}
