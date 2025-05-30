@@ -33,7 +33,7 @@ const Button = ({
         transition-transform duration-300
         transform hover:scale-105
         hover:shadow-[0_0_15px_5px_rgba(255,255,0,0.6)]
-        cursor-pointer font-racing
+  font-racing cursor-none
         ${sizeClasses[size]}
         ${className}
       `}

@@ -7,7 +7,23 @@ module.exports = {
     extend: {
       fontFamily: {
         racing: ["Racing Sans One", "sans-serif"],
-        fira: ['var(--font-fira)', 'sans-serif'],
+        fira: ["var(--font-fira)", "sans-serif"],
+      },
+      keyframes: {
+        "gradient-x": {
+          "0%, 100%": {
+            "background-position": "0% 50%",
+          },
+          "50%": {
+            "background-position": "100% 50%",
+          },
+        },
+      },
+      animation: {
+        "gradient-x": "gradient-x 3s ease infinite", // Añade esta línea
+      },
+      backgroundSize: {
+        '200': "200% 200%", // Esto ya lo tienes correctamente
       },
     },
   },

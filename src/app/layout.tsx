@@ -1,25 +1,24 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Racing_Sans_One } from 'next/font/google';
-import { Fira_Sans } from 'next/font/google'
+import { Racing_Sans_One } from "next/font/google";
+import { Fira_Sans } from "next/font/google";
+ import CustomCursor from "@/components/CustomCursor/CustomCursor";
 
 const racingSansOne = Racing_Sans_One({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-racing-sans-one', // ¡Define una variable CSS!
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-racing-sans-one", // ¡Define una variable CSS!
 });
 
 const fira = Fira_Sans({
-  subsets: ['latin'],
-  weight: [
-    '100', '200', '300', '400', '500', '600', '700', '800', '900'
-  ],
-  style: ['normal', 'italic'],
-  variable: '--font-fira',
-  display: 'swap',
-})
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-fira",
+  display: "swap",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,10 +42,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${racingSansOne.variable} ${fira.variable}`}>
-
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <CustomCursor /> 
         {children}
       </body>
     </html>
